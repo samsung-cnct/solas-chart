@@ -12,7 +12,7 @@ podTemplate(label: 'chart-builder', containers: [
         containerTemplate(name: 'jnlp', image: 'quay.io/samsung_cnct/custom-jnlp:0.1', args: '${computer.jnlpmac} ${computer.name}'),
         containerTemplate(name: 'helm-registry-agent', image: 'quay.io/samsung_cnct/helm-registry-agent:v0.1.5', ttyEnabled: true, command: 'cat', alwaysPullImage: true, resourceRequestMemory: '256Mi', resourceLimitMemory: '256Mi'),
 ], volumes: [
-    secretVolume(mountPath: '/home/jenkins/.docker/', secretName: robot_secret)
+    secretVolume(secretName: robot_secret)
 ]) {
     node('chart-builder') {
         customContainer('helm-registry-agent'){
