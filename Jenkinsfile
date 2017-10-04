@@ -10,11 +10,7 @@ def helm_registry_version = "v0.1.5";
 
 podTemplate(label: 'chart-builder', containers: [
         containerTemplate(name: 'jnlp', image: 'quay.io/samsung_cnct/custom-jnlp:0.1', args: '${computer.jnlpmac} ${computer.name}'),
-        containerTemplate(name: 'helm-registry-agent', image: 'quay.io/samsung_cnct/helm-registry-agent:v0.1.5', ttyEnabled: true, command: 'cat', alwaysPullImage: true, resourceRequestMemory: '256Mi', resourceLimitMemory: '256Mi'),
-], volumes: [
-    secretEnvVar(key: 'USERNAME', secretName: robot_secret, secretKey: 'username'),
-    secretEnvVar(key: 'PASSWORD', secretName: robot_secret, secretKey: 'password')
-]) {
+        containerTemplate(name: 'helm-registry-agent', image: 'quay.io/samsung_cnct/helm-registry-agent:v0.1.5', ttyEnabled: true, command: 'cat', alwaysPullImage: true, resourceRequestMemory: '256Mi', resourceLimitMemory: '256Mi')]) {
     node('chart-builder') {
         customContainer('helm-registry-agent'){
             stage('Checkout') {
@@ -31,7 +27,9 @@ podTemplate(label: 'chart-builder', containers: [
 
             if (env.BRANCH_NAME.startsWith('tags/v')) {
                 stage('Deploy') {
-                    kubesh("helm registry login ${registry} -u ${USERNAME} -p ${PASSWORD} && cd ${chart_name} && helm registry push ${registry}/${registry_user}/${chart_name} -c stable")
+                    withCredentials([usernamePassword(credentialsId: robot_secret, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        kubesh("helm registry login ${registry} -u ${USERNAME} -p ${PASSWORD} && cd ${chart_name} && helm registry push ${registry}/${registry_user}/${chart_name} -c stable")
+                    }
                 }
             }
         }       
