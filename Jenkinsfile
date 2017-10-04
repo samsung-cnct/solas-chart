@@ -5,7 +5,6 @@ def registry = "quay.io";
 def registry_user = "samsung_cnct";
 def chart_name = "zabra";
 def robot_secret = "quay-robot-zabra-rw"
-
 def helm_registry_image = "quay.io/samsung_cnct/helm-registry-agent";
 def helm_registry_version = "v0.1.5";
 
@@ -13,8 +12,7 @@ podTemplate(label: 'chart-builder', containers: [
         containerTemplate(name: 'jnlp', image: 'quay.io/samsung_cnct/custom-jnlp:0.1', args: '${computer.jnlpmac} ${computer.name}'),
         containerTemplate(name: 'helm-registry-agent', image: 'quay.io/samsung_cnct/helm-registry-agent:v0.1.5', ttyEnabled: true, command: 'cat', alwaysPullImage: true, resourceRequestMemory: '256Mi', resourceLimitMemory: '256Mi'),
 ], volumes: [
-    secretEnvVar(key: 'USERNAME', secretName: robot_secret, secretKey: 'username'),
-    secretEnvVar(key: 'PASSWORD', secretName: robot_secret, secretKey: 'password')
+    secretVolume(mountPath: '/home/jenkins/.docker/', secretName: robot_secret)
 ]) {
     node('chart-builder') {
         customContainer('helm-registry-agent'){
