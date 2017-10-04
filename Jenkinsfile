@@ -18,7 +18,7 @@ podTemplate(label: 'chart-builder', containers: [
             }
 
             stage('Build') {
-                kubesh("CHART_VER=1 CHART_REL=1 envsubst < build/Chart.yaml.in > ${chart_name}/Chart.yaml")
+                kubesh("CHART_VER=1 CHART_REL=1 envsubst < Chart.yaml.in > ${chart_name}/Chart.yaml")
 
                 //kubesh("CHART_VER=\$(git describe --tags --abbrev=0 | sed 's/^v//') CHART_REL=\$(git rev-list --count v\${CHART_VER}..HEAD) envsubst < build/Chart.yaml.in > ${chart_name}/Chart.yaml")
             }
