@@ -44,3 +44,19 @@ notifications.
 - [Fork](https://help.github.com/articles/fork-a-repo/) the `chart-zabra` repo
 (https://github.com/samsung-cnct/chart-zabra) from `samsung-cnct` and begin
 submitting PRs.
+
+# Versioning and Release Process
+
+Chart images are hosted on [Quay](https://quay.io) under "Application". We have the following conventions for versioning:
+The general versioning format is `x.x.x-y`. 
+
+## alpha
+Any image where `y` does not equal 0 is the most recent development version that has passed CI tests. It may change as further adjustments get made. Use at your own risk.
+
+## stable
+
+A release version of a chart image will be of the format `x.x.x-0`. This is considered a fully developed version of the chart.
+
+## Releases
+
+Releases are currently done manually, by pushing a tag to a certain state of master. A release will be cut when it is determined to be useful. Each new solas-container repository will be automatically tagged with `v0.0.0` on github. Since helm charts may not include a "v" in their version tag, but Github tags require it, the v is removed automatically during the publish stage of the CI run.
