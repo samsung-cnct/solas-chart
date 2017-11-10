@@ -15,6 +15,10 @@ stages:
 
 before_script:
   - helm registry login -u ${registry_user}+${robot_account} -p ${REGISTRY_PASSWORD} ${registry}
+  # Our helm charts have the version format 'x.x.x-y', where y is the number of commits since the last tagged version.
+  # A tagged version's 'y' will be 0.
+  # CHART_VER is the 'x.x.x' part of the version. Helm charts may not have a v in their versioning tag.
+  # CHART_REL is the 'y' part of the version.
   - export CHART_VER=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//')
   - export CHART_REL=$(git rev-list --count v${CHART_VER}..HEAD 2>/dev/null )
 
