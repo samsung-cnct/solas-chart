@@ -48,14 +48,14 @@ submitting PRs.
 # Versioning and Release Process
 
 Chart images are hosted on [Quay](https://quay.io) under "Application". We have the following conventions for versioning:
-The general versioning format is `x.x.x-y`. 
+The general versioning format is `x.y.z-a`. 
 
 ## alpha
-Any image where `y` does not equal 0 is the most recent development version that has passed CI tests. It may change as further adjustments get made. Use at your own risk.
+Any image where `a` does not equal 0 is the most recent development version that has passed CI tests. It may change as further adjustments get made. Use at your own risk.
 
 ## stable
 
-A release version of a chart image will be of the format `x.x.x-0`. This is considered a fully developed version of the chart.
+A release version of a chart image will be of the format `x.y.z-0`. This is considered a fully developed version of the chart.
 
 ## Releases
 
