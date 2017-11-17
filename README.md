@@ -59,4 +59,4 @@ A release version of a chart image will be of the format `x.y.z-0`. This is cons
 
 ## Releases
 
-Releases are currently done manually, by pushing a tag to a certain state of master. A release will be cut when it is determined to be useful. Each new solas-container repository will be automatically tagged with `v0.0.0` on github. Since helm charts may not include a "v" in their version tag, but Github tags require it, the v is removed automatically during the publish stage of the CI run.
+Releases are currently done manually, by pushing a tag to a certain state of master. A release will be cut when it is determined to be useful. Since helm charts may not include a "v" in their version tag, but Github tags require it, the v is removed automatically during the publish stage of the CI run.
