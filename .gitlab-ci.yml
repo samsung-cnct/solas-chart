@@ -2,7 +2,7 @@ image: $HELM_REGISTRY_IMAGE:$HELM_REGISTRY_VERSION
 
 variables:
   REGISTRY: quay.io
-  REGISTRY_USER: samsung_cnct
+  REGISTRY_USER: your_org # we set this to override to samsung_cnct in gitlab Group Variables
   CHART_NAME: zabra
   ROBOT_ACCOUNT: zabra_rw
   HELM_REGISTRY_IMAGE: quay.io/samsung_cnct/helm-registry-agent
