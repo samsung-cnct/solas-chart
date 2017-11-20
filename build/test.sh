@@ -9,7 +9,7 @@
 [[ ! -d "${CHART_NAME}" ]] && \
   {
     echo >&2 "Directory for chart '$CHART_NAME' does not exist."
-    exit 20
+    exit 1
   }
 
 helm lint ${CHART_NAME}
