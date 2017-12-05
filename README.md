@@ -1,3 +1,5 @@
+[![pipeline status](https://git.cnct.io/common-tools/samsung-cnct_solas-chart/badges/master/pipeline.svg)](https://git.cnct.io/common-tools/samsung-cnct_solas-chart/commits/master)
+
 # solas-chart
 `solas-chart` is scaffolding for new chart repositories hosted by Samsung CNCT. It
 implements our best practices, such as issue and PR templates, commit hooks,
