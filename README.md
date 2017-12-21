@@ -3,7 +3,7 @@
 implements our best practices, such as issue and PR templates, commit hooks,
 licensing guidelines, and so on.
 
-We use GitLab to implement our CI/CD pipelines. There is one GitLab repository for 
+We use GitLab to implement our CI/CD pipelines. There is one GitLab repository for
 each GitHub repository. Each job builds, tests and, then deploys an artifact
 to Quay.
 
@@ -36,8 +36,6 @@ rm -rf solas-chart.git
 [Quay](https://github.com/samsung-cnct/solas/blob/master/docs/quay.md),
 and [GitLab](https://github.com/samsung-cnct/solas/blob/master/docs/gitlab.md).
 
-[Jenkins](https://github.com/samsung-cnct/solas/blob/master/docs/jenkins.md) is currently being phased out.
-
 - Configure [Slack](https://github.com/samsung-cnct/solas/blob/master/docs/slack.md)
 notifications.
 
@@ -48,7 +46,7 @@ submitting PRs.
 # Versioning and Release Process
 
 Chart images are hosted on [Quay](https://quay.io) under "Application". We have the following conventions for versioning:
-The general versioning format is `x.y.z-a`. 
+The general versioning format is `x.y.z-a`.
 
 ## alpha
 Any image where `a` does not equal 0 is the most recent development version that has passed CI tests. It may change as further adjustments get made. Use at your own risk.
